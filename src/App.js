@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState} from 'react';
+import Main,{Foot,PopUp,Win,MobMain} from "./Components";
+import { useMediaQuery } from 'react-responsive';
 
 function App() {
+
+  const small = useMediaQuery({
+    query: '(min-width : 481px) and (max-width : 1000px)'
+  })  
+
+  const pad = useMediaQuery({
+    query: '(min-width : 760px) and (max-width : 1000px) and (orientation:portrait)'
+  })  
+
+  const [pop,showPop] = useState({
+    mes:false,
+    win:false,
+    ctr:0
+  });
+  const [win,showWin] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="h-100 w-100 pos-rel">
+
+      {pop.win&&<Win/>}
+      {pop.mes&&<PopUp show={showPop} pop={pop}/>}
+
+      {small&&!pad?
+      <MobMain show={showPop} pop={pop}/>
+        :
+      <Main show={showPop} pop={pop}/>
+      }
+
+      <Foot/>
     </div>
   );
 }
