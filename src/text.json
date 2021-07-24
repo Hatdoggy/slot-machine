@@ -1,0 +1,14 @@
+{
+	"mainPop":{
+		"header":"",
+		"desc":""
+	},
+	"main":"",
+	"footer":"",
+	"popUp":{
+		"header":""
+	},
+	"popWin":{
+		"desc":""
+	}
+}

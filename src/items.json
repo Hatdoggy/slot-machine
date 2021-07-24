@@ -1,0 +1,34 @@
+[	
+	{
+		"src":"./img/svg/bar.svg",
+		"alt":"bar"
+	},
+	{
+		"src":"./img/svg/seven.svg",
+		"alt":"seven"
+	},
+	{
+		"src":"./img/svg/melon.svg",
+		"alt":"melon"
+	},
+	{
+		"src":"./img/svg/crown.svg",
+		"alt":"crown"
+	},
+	{
+		"src":"./img/svg/cherry.svg",
+		"alt":"cherry"
+	},
+	{
+		"src":"./img/svg/diamond.svg",
+		"alt":"diamond"
+	},
+	{
+		"src":"./img/svg/lemon.svg",
+		"alt":"lemon"
+	},
+	{
+		"src":"./img/svg/ten.svg",
+		"alt":"ten"
+	}					
+]

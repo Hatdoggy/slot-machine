@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import Main,{Foot,PopUp,Win,MobMain} from "./Components";
+import Main,{Foot,PopUp,Win,MobMain,MainPop} from "./Components";
 import { useMediaQuery } from 'react-responsive';
 
 function App() {
@@ -12,6 +12,8 @@ function App() {
     query: '(min-width : 760px) and (max-width : 1000px) and (orientation:portrait)'
   })  
 
+  const [alert,hideAlert] = useState(true);
+
   const [pop,showPop] = useState({
     mes:false,
     win:false,
@@ -20,7 +22,10 @@ function App() {
   const [win,showWin] = useState(false);
 
   return (
-    <div className="h-100 w-100 pos-rel">
+    alert?
+    <MainPop hide={hideAlert}/>
+      :
+    <div className="h-100 w-100 pos-rel fade">
 
       {pop.win&&<Win/>}
       {pop.mes&&<PopUp show={showPop} pop={pop}/>}
@@ -32,7 +37,7 @@ function App() {
       }
 
       <Foot/>
-    </div>
+    </div>    
   );
 }
 

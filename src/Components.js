@@ -1,4 +1,5 @@
 import {useEffect} from 'react';
+import spin,{init} from './func.js';
 
 const Head = ()=>{
 	return(
@@ -17,25 +18,30 @@ const Head = ()=>{
 
 const Slot = ()=>{
 	return(
-		<section className="flx flx-jc-sb flx-ai-ce h-90 w-100 m-t-2">
-			<span className="brd-50 bg-wht h-100 w-30 shdw"></span>
-			<span className="brd-50 bg-wht h-100 w-30 shdw m-l-2 m-r-2"></span>
-			<span className="brd-50 bg-wht h-100 w-30 shdw"></span>
+		<section className="flx flx-jc-sb flx-ai-ce h-90 w-100 m-t-2 doors">
+			<span className="brd-50 bg-wht h-100 w-30 shdw door ovr-hide trans">
+				<div className="boxes"></div>
+			</span>
+			<span className="brd-50 bg-wht h-100 w-30 shdw door ovr-hide trans m-l-2 m-r-2">
+				<div className="boxes"></div>
+			</span>
+			<span className="brd-50 bg-wht h-100 w-30 shdw door ovr-hide trans">
+				<div className="boxes"></div>
+			</span>
 		</section>
 	)
 }
 
 const Mes = (props)=>{
-
 	const upd =()=>{
 		let {show,pop} = props;
 		if(pop.ctr<3){
-			show({
-				...pop,
-				mes:true,
-				ctr:[pop.ctr+1]
-			});
-			console.log(pop.mes)
+			spin();
+			// show({
+			// 	...pop,
+			// 	mes:true,
+			// 	ctr:[pop.ctr+1]
+			// });
 		}else{
 			show({
 				...pop,
@@ -54,6 +60,9 @@ If you see this spinner you can still use your 3 FREE SPINS but please hurry the
 }
 
 const Main = (props)=>{
+	useEffect(()=>{
+		init()
+	})
 	return(
 		<main className="w-vw flx flx-col flx-ai-ce flx-jc-ce h-90">
 			<img src="./img/logo.png" alt="logo" className="logo m-t-2"/>
@@ -134,5 +143,18 @@ You are eligible to pick up $1000 + 50 free spins when creating your account wit
 	)
 }
 
+const MainPop = (props)=>{
+
+	return(
+		<main className="bg-pop pos-abs w-100 h-vh flx flx-jc-ce flx-ai-ce fade ">
+			<div className="w-30 flx flx-col flx-jc-ce flx-ai-ce p-50 brd-50 txt-wht bg-rev shdw trans pop">
+				<h4 className="mont-b">ABOUT TO EXPIRE!</h4>
+				<p className="rob m-t-2">This is our last try - The 3 FREE SPINS will expire end of tomorrow: Sunday 25 Of July Wednesday 21 Of July!</p>
+				<button className="mont-b btn-wht brd-50 w-50 m-t-10" onClick={()=>props.hide(false)}>LETS GO!</button>
+			</div>
+		</main>
+	)
+}
+
 export default Main;
-export {Foot,PopUp,Win,MobMain}
+export {Foot,PopUp,Win,MobMain,MainPop}
