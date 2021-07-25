@@ -17,7 +17,8 @@ function App() {
   const [pop,showPop] = useState({
     mes:false,
     win:false,
-    ctr:0
+    ctr:3,
+    cash:100
   });
   const [win,showWin] = useState(false);
 

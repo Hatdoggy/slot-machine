@@ -2,27 +2,35 @@ import items from './items.json'
 
   const shuffle = ([...arr])=>{
     let m = arr.length;
+
     while (m) {
       const i = Math.floor(Math.random() * m--);
       [arr[m], arr[i]] = [arr[i], arr[m]];
     }
+
     return arr;
   }
 
   const createImg = (pool,boxesClone,door,ctr)=>{
-    const box = document.createElement("img");
+    const box = document.createElement("div");
+    const img = document.createElement("img");
+
     box.classList.add("box");
-    box.src = pool[ctr].src;
-    box.alt = pool[ctr].alt;
-    box.style.width = door.clientWidth + "px";
+
+    img.src = pool[ctr].src;
+    img.alt = pool[ctr].alt;
+    img.classList.add('w-80');
+
+    box.appendChild(img);
+    box.style.width = "100%";
     box.style.height = door.clientHeight + "px";
-    boxesClone.appendChild(box);    
+    boxesClone.appendChild(box);
   }
 
-  async function spin() {
+  async function spin(ctr) {
 
     const doors = document.querySelectorAll(".door");    
-    init(false, 1, 2);
+    init(false, 1, 2,ctr);
     for (const door of doors) {
       const boxes = door.querySelector(".boxes");
       const duration = parseInt(boxes.style.transitionDuration);
@@ -49,7 +57,7 @@ const setListener = (boxesClone,door)=>{
   }
 }
 
-export const init = (firstInit = true, groups = 1, duration = 1)=>{
+export const init = (firstInit = true, groups = 1, duration = 1,ctr)=>{
 
   const doors = document.querySelectorAll(".door");
 
@@ -66,15 +74,17 @@ export const init = (firstInit = true, groups = 1, duration = 1)=>{
       const pool = [];
       pool.push(items[0])
 
-      setListener(boxesClone,door)
-
       if (!firstInit) {
         const arr = [];
         for (let n = 0; n < (groups > 0 ? groups : 1); n++) {
           arr.push(...items);
         }
-        pool.push(...shuffle(arr));
-
+        if(ctr>1){
+          pool.push(...shuffle(arr,ctr))
+        }else{
+          pool.push(...arr)
+        }
+        setListener(boxesClone,door)
       }
 
       for (let i = pool.length - 1; i >= 0; i--) {

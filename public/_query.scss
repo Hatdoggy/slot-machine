@@ -1,9 +1,8 @@
 @media only screen
 and (max-width: 1000px) {
 
-	.logo,.cont,.mes{
-		margin-top: 10%;
-	}.logo{
+	.logo{
+		margin-top: 5%!important;
 		width: 50px!important;
 		height: 50px!important;
 	}
@@ -14,7 +13,7 @@ and (max-width: 1000px) {
 			border-radius: 15px!important;
 			width: 80%;
 			section{
-				margin-top: 5%;
+				margin-top: 10%;
 				span{
 					border-radius:15px;
 				}
@@ -60,6 +59,9 @@ and (max-width : 1000px)  {
 	.cont{
 		margin-top: 0!important;
 		width: 50%;
+		.doors{
+			height: 150px!important;
+		}
 	}
 	.logo{
 		width: 75px!important;
@@ -112,5 +114,17 @@ and (orientation: portrait) {
 
 @media only screen
 and (min-width: 1400px) {
-
+	.logo{
+		width: 100px!important;
+		height: 100px!important;
+	}	
+	.doors{
+		height: 500px!important;
+	}
+	.popWin{
+		img{
+			width: 100px!important;
+			height: 100px!important;
+		}
+	}		
 }

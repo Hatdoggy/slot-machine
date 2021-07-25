@@ -1,16 +1,17 @@
 import {useEffect} from 'react';
 import spin,{init} from './func.js';
+import {mainPop,main,footer,popWin,popUp} from './text.json'
 
-const Head = ()=>{
+const Head = (props)=>{
 	return(
-		<header className="flx flx-jc-sb flx-ai-ce w-100">
+		<header className="flx flx-jc-sb flx-ai-ce w-100 h-10">
 			<div className="flx flx-ai-ce w-50 ">
 				<p className="w-auto mont-b txt-wht">Spins left</p>
-				<p className="w-50 m-l-2 rob bg-main txt-wht p-5 txt-al-ce brd-50">3</p>
+				<p className="w-50 m-l-2 rob bg-main txt-wht p-5 txt-al-ce brd-50">{props.pop.ctr}</p>
 			</div>
 			<div className="flx flx-jc-end flx-ai-ce m-l-auto w-50">
 				<p className="w-auto mont-b txt-wht">Your wallet</p>
-				<p className="w-50 m-l-2 rob bg-main txt-wht p-5 txt-al-ce brd-50">$100</p>
+				<p className="w-50 m-l-2 rob bg-main txt-wht p-5 txt-al-ce brd-50">${props.pop.cash}</p>
 			</div>
 		</header>
 	)
@@ -33,28 +34,37 @@ const Slot = ()=>{
 }
 
 const Mes = (props)=>{
-	const upd =()=>{
+	const upd =async()=>{
 		let {show,pop} = props;
-		if(pop.ctr<3){
-			spin();
-			// show({
-			// 	...pop,
-			// 	mes:true,
-			// 	ctr:[pop.ctr+1]
-			// });
-		}else{
-			show({
-				...pop,
-				win:true
-			});			
-		}
+
+		spin(pop.ctr).then(res=>{
+			if(pop.ctr>1){
+				setTimeout(()=>{
+					show({
+						...pop,
+						mes:true,
+						ctr:[pop.ctr-1],
+				 		cash:[pop.cash-20]		
+					});
+				},2000)
+			}else{
+				setTimeout(()=>{
+					show({
+						...pop,
+						ctr:[pop.ctr-1],
+						cash:[pop.cash+1000],
+						win:true
+					});	
+				},2000)		
+			}		
+		})
+
 	}
 
 	return(
 		<div className="flx flx-col flx-jc-ce flx-ai-ce m-t-2 mes">
-			<button className="brd-50 btn-clr mont-b w-30" onClick={()=>upd()}>Spin</button>
-			<p className="txt-al-ce txt-wht rob w-50 p-20">A total of 300 FREE SPINS have been given out to 100 persons.
-If you see this spinner you can still use your 3 FREE SPINS but please hurry the deadline to use them is near. </p>			
+			<button className="brd-50 btn-clr mont-b w-30 flx" onClick={()=>upd()}>Spin<i className="fas fa-sync m-l-auto txt-wht" id="exit"></i></button>
+			<p className="txt-al-ce txt-wht rob w-50 p-20">{main}</p>			
 		</div>
 	)
 }
@@ -67,8 +77,8 @@ const Main = (props)=>{
 		<main className="w-vw flx flx-col flx-ai-ce flx-jc-ce h-90">
 			<img src="./img/logo.png" alt="logo" className="logo m-t-2"/>
 			<div className="m-t-2 brd-50 h-80 w-50 flx flx-jc-ce flx-ai-ce w-100 cont">
-				<div className="bg-glass flx flx-col flx-jc-ce flx-ai-ce p-20 brd-50 h-90 brd-wht w-80">
-					<Head/>
+				<div className="bg-glass flx flx-col flx-jc-sa flx-ai-ce p-20 brd-50 h-90 brd-wht w-80">
+					<Head pop={props.pop}/>
 					<Slot/>
 				</div>
 			</div>
@@ -78,11 +88,14 @@ const Main = (props)=>{
 }
 
 const MobMain = (props)=>{
+	useEffect(()=>{
+		init()
+	})	
 	return(
 		<main className="w-vw flx flx-ai-ce flx-jc-ce h-90">
 			<div className="brd-50 h-80 w-50 flx flx-jc-ce flx-ai-ce w-100 cont">
 				<div className="bg-glass flx flx-col flx-jc-ce flx-ai-ce p-20 brd-50 h-90 brd-wht w-80">
-					<Head/>
+					<Head pop={props.pop}/>
 					<Slot/>
 				</div>
 			</div>
@@ -118,12 +131,12 @@ const PopUp = (props)=>{
 	})
 
 	return(
-		<main className="bg-pop pos-abs w-100 h-vh flx flx-jc-ce flx-ai-ce fade ">
+		<main className="bg-pop pos-abs w-100 h-vh flx flx-jc-ce flx-ai-ce fade z-top">
 			<div className="w-30 flx flx-col flx-jc-ce flx-ai-ce p-50 brd-50 txt-wht bg-rev shdw trans pop">
-				<h4 className="rob">Message</h4>
+				<h4 className="rob">{popUp.header}</h4>
 				<h1 className="mont-b m-t-5 h-50">-20</h1>
-				<p className="mont-r m-t-5 brd-50 p-10 txt-al-ce brd-wht w-50 flx">Your Wallet <span className="mont-b m-l-auto">insert</span></p>
-				<p className="rob m-t-2">Num of spins left</p>
+				<p className="mont-r m-t-5 brd-50 p-10 txt-al-ce brd-wht w-50 flx">Your Wallet <span className="mont-b m-l-auto">${props.pop.cash}</span></p>
+				<p className="rob m-t-2">Spins left: {props.pop.ctr}</p>
 			</div>
 		</main>
 	)
@@ -131,11 +144,10 @@ const PopUp = (props)=>{
 
 const Win = ()=>{
 	return(
-		<main className="bg-pop pos-abs w-100 h-vh flx flx-jc-ce flx-ai-ce fade ">
+		<main className="bg-pop pos-abs w-100 h-vh flx flx-jc-ce flx-ai-ce fade z-top">
 			<div className="w-30 flx flx-col flx-jc-ce flx-ai-ce p-50 h-80 brd-50 txt-wht bg-rev shdw trans popWin">
 				<h4 className="mont-b">CONGRATULATIONS</h4>
-				<p className="rob m-t-5 txt-al-ce W-50">Congratulations - Only 2% of the users won this: $1000 + 50 FREE Spins as Welcome Bonus on Spin Casino!
-You are eligible to pick up $1000 + 50 free spins when creating your account with Spin Casino</p>
+				<p className="rob m-t-5 txt-al-ce W-50">{popWin.desc}</p>
 				<img src="./img/logo.png" alt="logo" className="m-t-5"/>
 				<button className="mont-b btn-wht brd-50 w-50 m-t-10">Claim my bonus!</button>
 			</div>
@@ -146,10 +158,10 @@ You are eligible to pick up $1000 + 50 free spins when creating your account wit
 const MainPop = (props)=>{
 
 	return(
-		<main className="bg-pop pos-abs w-100 h-vh flx flx-jc-ce flx-ai-ce fade ">
+		<main className="bg-pop pos-abs w-100 h-vh flx flx-jc-ce flx-ai-ce fade z-top">
 			<div className="w-30 flx flx-col flx-jc-ce flx-ai-ce p-50 brd-50 txt-wht bg-rev shdw trans pop">
-				<h4 className="mont-b">ABOUT TO EXPIRE!</h4>
-				<p className="rob m-t-2">This is our last try - The 3 FREE SPINS will expire end of tomorrow: Sunday 25 Of July Wednesday 21 Of July!</p>
+				<h4 className="mont-b">{mainPop.header}</h4>
+				<p className="rob m-t-2">{mainPop.desc}</p>
 				<button className="mont-b btn-wht brd-50 w-50 m-t-10" onClick={()=>props.hide(false)}>LETS GO!</button>
 			</div>
 		</main>
