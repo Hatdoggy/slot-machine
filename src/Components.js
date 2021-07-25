@@ -1,5 +1,5 @@
 import {useEffect} from 'react';
-import spin,{init} from './func.js';
+import spin,{init,ActionRedirect} from './func.js';
 import {mainPop,main,footer,popWin,popUp} from './text.json'
 
 const Head = (props)=>{
@@ -72,7 +72,7 @@ const Mes = (props)=>{
 const Main = (props)=>{
 	useEffect(()=>{
 		init()
-	})
+	},[])
 	return(
 		<main className="w-vw flx flx-col flx-ai-ce flx-jc-ce h-90">
 			<img src="./img/logo.png" alt="logo" className="logo m-t-2"/>
@@ -149,7 +149,7 @@ const Win = ()=>{
 				<h4 className="mont-b">CONGRATULATIONS</h4>
 				<p className="rob m-t-5 txt-al-ce W-50">{popWin.desc}</p>
 				<img src="./img/logo.png" alt="logo" className="m-t-5"/>
-				<button className="mont-b btn-wht brd-50 w-50 m-t-10">Claim my bonus!</button>
+				<button className="mont-b btn-wht brd-50 w-50 m-t-10" onClick={ActionRedirect}>Claim my bonus!</button>
 			</div>
 		</main>
 	)

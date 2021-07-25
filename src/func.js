@@ -15,11 +15,11 @@ import items from './items.json'
     const box = document.createElement("div");
     const img = document.createElement("img");
 
-    box.classList.add("box");
+    box.classList.add("box",'trans');
 
     img.src = pool[ctr].src;
     img.alt = pool[ctr].alt;
-    img.classList.add('w-80');
+    img.classList.add('w-80','trans');
 
     box.appendChild(img);
     box.style.width = "100%";
@@ -41,25 +41,15 @@ import items from './items.json'
   }  
 
   export default spin;
-
-const setListener = (boxesClone,door)=>{
-  boxesClone.transitionstart = ()=>{
-    door.dataset.spinned = "1";
-    this.querySelectorAll(".box").forEach((box) => {
-      box.style.filter = "blur(1px)";
-    });  
-  }
-
-  boxesClone.transitionend = ()=>{
-    this.querySelectorAll(".box").forEach((box, index) => {
-      box.style.filter = "blur(0)";
-    });    
-  }
-}
+  
+let pool = [];
 
 export const init = (firstInit = true, groups = 1, duration = 1,ctr)=>{
 
   const doors = document.querySelectorAll(".door");
+  if(!ctr){
+   pool.push(items[0])
+  }
 
     for (const door of doors) {
       if (firstInit) {
@@ -71,9 +61,6 @@ export const init = (firstInit = true, groups = 1, duration = 1,ctr)=>{
       const boxes = door.querySelector(".boxes");
       const boxesClone = boxes.cloneNode(false);
 
-      const pool = [];
-      pool.push(items[0])
-
       if (!firstInit) {
         const arr = [];
         for (let n = 0; n < (groups > 0 ? groups : 1); n++) {
@@ -83,9 +70,8 @@ export const init = (firstInit = true, groups = 1, duration = 1,ctr)=>{
           pool.push(...shuffle(arr,ctr))
         }else{
           pool.push(...arr)
-        }
-        setListener(boxesClone,door)
-      }
+        }     
+      }     
 
       for (let i = pool.length - 1; i >= 0; i--) {
         createImg(pool,boxesClone,door,i)
@@ -98,3 +84,19 @@ export const init = (firstInit = true, groups = 1, duration = 1,ctr)=>{
       door.replaceChild(boxesClone, boxes);
     }
   }
+
+/* Link functions */
+
+function getURLParameter(name) {
+  return decodeURI(
+    (RegExp(name + '=' + '(.+?)(&|$)').exec(window.location.search)||[,null])[1] || '');
+}
+
+var ffdomain = 'https://' + getURLParameter('ffdomain');
+var session = getURLParameter('session');
+var fluxf = getURLParameter('fluxf');
+var fluxffn = getURLParameter('fluxffn');
+
+export function ActionRedirect(action){
+  window.location.replace(ffdomain + '/?flux_action=' + action + '&flux_f=' + fluxf + '&flux_ffn=' + fluxffn + '&flux_sess=' + session);
+}
