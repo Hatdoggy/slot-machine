@@ -18,6 +18,8 @@
     justify-content: space-evenly; }
   .flx-jc-sb {
     justify-content: space-between; }
+  .flx-jc-sa {
+    justify-content: space-around; }
   .flx-ai-ce {
     align-items: center; }
   .flx-ai-end {
@@ -46,6 +48,9 @@
   width: auto; }
 .w-0 {
   width: 0; }
+
+.mx {
+  max-height: 90%; }
 
 .h-vh {
   height: 100vh; }
@@ -264,10 +269,8 @@
   100% {
     opacity: 100%; } }
 @media only screen and (max-width: 1000px) {
-  .logo, .cont, .mes {
-    margin-top: 10%; }
-
   .logo {
+    margin-top: 5% !important;
     width: 50px !important;
     height: 50px !important; }
 
@@ -277,7 +280,7 @@
       border-radius: 15px !important;
       width: 80%; }
       .cont div.bg-glass section {
-        margin-top: 5%; }
+        margin-top: 10%; }
         .cont div.bg-glass section span {
           border-radius: 15px; }
       .cont div.bg-glass header div {
@@ -303,6 +306,8 @@
   .cont {
     margin-top: 0 !important;
     width: 50%; }
+    .cont .doors {
+      height: 150px !important; }
 
   .logo {
     width: 75px !important;
@@ -333,6 +338,17 @@
     .popWin img {
       width: 150px !important;
       height: 150px !important; } }
+@media only screen and (min-width: 1400px) {
+  .logo {
+    width: 100px !important;
+    height: 100px !important; }
+
+  .doors {
+    height: 500px !important; }
+
+  .popWin img {
+    width: 100px !important;
+    height: 100px !important; } }
 .mont-b {
   font-family: "Montserrat", sans-serif;
   font-weight: 700; }
@@ -347,6 +363,20 @@
 .logo, .warn {
   width: 35px;
   height: 35px; }
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.doors {
+  height: 250px; }
+
+button {
+  transition: .5s ease-in-out; }
+  button:hover {
+    cursor: pointer;
+    opacity: .8; }
 
 h1 {
   font-size: clamp(1.5rem, 2.5rem, 3rem) !important; }

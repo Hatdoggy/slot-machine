@@ -21,6 +21,20 @@
 .logo,.warn{
 	width: 35px;
 	height: 35px;
+}.box{
+  display: flex;
+  justify-content: center;
+  align-items: center;	
+}.doors{
+	height: 250px;
+}
+
+button{
+	transition: .5s ease-in-out;
+	&:hover{
+		cursor: pointer;
+		opacity: .8;
+	}
 }
 
 h1{

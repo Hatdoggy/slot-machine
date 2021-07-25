@@ -25,6 +25,9 @@
 		&-sb{
 			justify-content: space-between;
 		}
+		&-sa{
+			justify-content: space-around;
+		}
 	}
 	&-ai{
 		&-ce{
@@ -73,6 +76,10 @@
 	&-0{
 		width: 0;
 	}
+}
+
+.mx{
+	max-height: 90%;
 }
 
 .h{
