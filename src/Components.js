@@ -55,7 +55,7 @@ const Mes = (props)=>{
 						cash:[pop.cash+1000],
 						win:true
 					});	
-				},2000)		
+				},3500)		
 			}		
 		})
 
@@ -63,7 +63,7 @@ const Mes = (props)=>{
 
 	return(
 		<div className="flx flx-col flx-jc-ce flx-ai-ce m-t-2 mes">
-			<button className="brd-50 btn-clr mont-b w-30 flx" onClick={()=>upd()}>Spin<i className="fas fa-sync m-l-auto txt-wht" id="exit"></i></button>
+			<button className="brd-50 btn-clr mont-b w-30 flx pulse" onClick={()=>upd()}>Spin<i className="fas fa-sync m-l-auto txt-wht" id="exit"></i></button>
 			<p className="txt-al-ce txt-wht rob w-50 p-20">{main}</p>			
 		</div>
 	)
@@ -149,7 +149,7 @@ const Win = ()=>{
 				<h4 className="mont-b">CONGRATULATIONS</h4>
 				<p className="rob m-t-5 txt-al-ce W-50">{popWin.desc}</p>
 				<img src="./img/logo.png" alt="logo" className="m-t-5"/>
-				<button className="mont-b btn-wht brd-50 w-50 m-t-10" onClick={ActionRedirect}>Claim my bonus!</button>
+				<button className="mont-b btn-wht brd-50 w-50 m-t-10 pulse product-button"  data-product-id="1" onClick={elem=>ActionRedirect(elem.target.dataset.productId)}>Claim my bonus!</button>
 			</div>
 		</main>
 	)
@@ -162,7 +162,7 @@ const MainPop = (props)=>{
 			<div className="w-30 flx flx-col flx-jc-ce flx-ai-ce p-50 brd-50 txt-wht bg-rev shdw trans pop">
 				<h4 className="mont-b">{mainPop.header}</h4>
 				<p className="rob m-t-2">{mainPop.desc}</p>
-				<button className="mont-b btn-wht brd-50 w-50 m-t-10" onClick={()=>props.hide(false)}>LETS GO!</button>
+				<button className="mont-b btn-wht brd-50 w-50 m-t-10 pulse" onClick={()=>props.hide(false)}>LETS GO!</button>
 			</div>
 		</main>
 	)

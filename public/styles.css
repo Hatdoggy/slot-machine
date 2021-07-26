@@ -263,11 +263,34 @@
 .fade {
   animation: .5s fade; }
 
+.pulse {
+  animation: pulse 2s infinite; }
+
 @keyframes fade {
   0% {
     opacity: 0; }
   100% {
     opacity: 100%; } }
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(0.9);
+    box-shadow: 0 3px 10px 1px rgba(0, 0, 0, 0.5); }
+  70% {
+    -webkit-transform: scale(1);
+    box-shadow: 0 3px 10px 1px rgba(0, 0, 0, 0.2); }
+  100% {
+    -webkit-transform: scale(0.9);
+    box-shadow: 0 3px 10px 1px rgba(0, 0, 0, 0.5); } }
+@keyframes pulse {
+  0% {
+    -webkit-transform: scale(0.9);
+    box-shadow: 0 3px 10px 1px rgba(0, 0, 0, 0.5); }
+  70% {
+    -webkit-transform: scale(1);
+    box-shadow: 0 3px 10px 1px rgba(0, 0, 0, 0.2); }
+  100% {
+    -webkit-transform: scale(0.9);
+    box-shadow: 0 3px 10px 1px rgba(0, 0, 0, 0.5); } }
 @media only screen and (max-width: 1000px) {
   .logo {
     margin-top: 5% !important;

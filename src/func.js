@@ -67,6 +67,7 @@ export const init = (firstInit = true, groups = 1, duration = 1,ctr)=>{
           arr.push(...items);
         }
         if(ctr>1){
+          console.log('You went here')
           pool.push(...shuffle(arr,ctr))
         }else{
           pool.push(...arr)
