@@ -313,7 +313,8 @@
   div.mes button {
     width: 80%; }
   div.mes p {
-    width: auto; }
+    width: auto;
+    padding: 10px !important; }
 
   footer span {
     width: 80%; }
@@ -326,7 +327,7 @@
       width: 100%;
       text-align: center; } }
 /* Landscape IPAD and Mobile */
-@media only screen and (min-width: 481px) and (max-width: 1000px) {
+@media only screen and (min-width: 481px) and (max-width: 1000px) and (orientation: landscape) {
   .cont {
     margin-top: 0 !important;
     width: 50%; }

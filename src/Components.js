@@ -161,7 +161,7 @@ const MainPop = (props)=>{
 		<main className="bg-pop pos-abs w-100 h-vh flx flx-jc-ce flx-ai-ce fade z-top">
 			<div className="w-30 flx flx-col flx-jc-ce flx-ai-ce p-50 brd-50 txt-wht bg-rev shdw trans pop">
 				<h4 className="mont-b">{mainPop.header}</h4>
-				<p className="rob m-t-2">{mainPop.desc}</p>
+				<p className="rob m-t-2 txt-al-ce">{mainPop.desc}</p>
 				<button className="mont-b btn-wht brd-50 w-50 m-t-10 pulse" onClick={()=>props.hide(false)}>LETS GO!</button>
 			</div>
 		</main>

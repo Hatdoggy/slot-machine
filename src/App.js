@@ -5,12 +5,8 @@ import { useMediaQuery } from 'react-responsive';
 function App() {
 
   const small = useMediaQuery({
-    query: '(min-width : 481px) and (max-width : 1000px)'
-  })  
-
-  const pad = useMediaQuery({
-    query: '(min-width : 760px) and (max-width : 1000px) and (orientation:portrait)'
-  })  
+    query: '(min-width : 481px) and (max-width : 1000px) and (orientation:landscape)'
+  }) 
 
   const [alert,hideAlert] = useState(true);
 
@@ -31,7 +27,7 @@ function App() {
       {pop.win&&<Win/>}
       {pop.mes&&<PopUp show={showPop} pop={pop}/>}
 
-      {small&&!pad?
+      {small?
       <MobMain show={showPop} pop={pop}/>
         :
       <Main show={showPop} pop={pop}/>
