@@ -98,7 +98,7 @@ function getURLParameter(name) {
 // let fluxf = getURLParameter('fluxf');
 // let fluxffn = getURLParameter('fluxffn');
 
-let ffdomain = 'somedomain.tld';
+let ffdomain = 'https://somedomain.tld';
 let session = 'abcd';
 let fluxf = 'summin';
 let fluxffn = 'summinelse';
