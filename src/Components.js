@@ -2,6 +2,14 @@ import {useEffect} from 'react';
 import spin,{init,ActionRedirect} from './func.js';
 import {mainPop,main,footer,popWin,popUp} from './text.json'
 
+const months = [ "January", "February", "March", "April", "May", "June",
+"July", "August", "September", "October", "November", "December" ];
+
+const today = new Date();
+const dd = String(today.getDate()+1).padStart(2, '0');
+const mm = months[today.getMonth()];
+const yyyy = today.getFullYear();
+
 const Head = (props)=>{
 	return(
 		<header className="flx flx-jc-sb flx-ai-ce w-100 h-10">
@@ -161,7 +169,7 @@ const MainPop = (props)=>{
 		<main className="bg-pop pos-abs w-100 h-vh flx flx-jc-ce flx-ai-ce fade z-top">
 			<div className="w-30 flx flx-col flx-jc-ce flx-ai-ce p-50 brd-50 txt-wht bg-rev shdw trans pop">
 				<h4 className="mont-b">{mainPop.header}</h4>
-				<p className="rob m-t-2 txt-al-ce">{mainPop.desc}</p>
+				<p className="rob m-t-2 txt-al-ce">{mainPop.desc + `${mm} ${dd} ${yyyy}`}</p>
 				<button className="mont-b btn-wht brd-50 w-50 m-t-10 pulse" onClick={()=>props.hide(false)}>LETS GO!</button>
 			</div>
 		</main>

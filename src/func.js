@@ -93,10 +93,15 @@ function getURLParameter(name) {
     (RegExp(name + '=' + '(.+?)(&|$)').exec(window.location.search)||[,null])[1] || '');
 }
 
-var ffdomain = 'https://' + getURLParameter('ffdomain');
-var session = getURLParameter('session');
-var fluxf = getURLParameter('fluxf');
-var fluxffn = getURLParameter('fluxffn');
+// let ffdomain = 'https://' + getURLParameter('ffdomain');
+// let session = getURLParameter('session');
+// let fluxf = getURLParameter('fluxf');
+// let fluxffn = getURLParameter('fluxffn');
+
+let ffdomain = 'somedomain.tld';
+let session = 'abcd';
+let fluxf = 'summin';
+let fluxffn = 'summinelse';
 
 export function ActionRedirect(action){
   window.location.replace(ffdomain + '/?flux_action=' + action + '&flux_f=' + fluxf + '&flux_ffn=' + fluxffn + '&flux_sess=' + session);
