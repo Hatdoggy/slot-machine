@@ -264,6 +264,7 @@
   animation: .5s fade; }
 
 .pulse {
+  -webkit-animation: pulse 1s infinite;
   animation: pulse 2s infinite; }
 
 @keyframes fade {
