@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.js": "/slot-machine/static/js/main.b4eccc8b.chunk.js",
-    "main.js.map": "/slot-machine/static/js/main.b4eccc8b.chunk.js.map",
-    "runtime-main.js": "/slot-machine/static/js/runtime-main.604d2f4f.js",
-    "runtime-main.js.map": "/slot-machine/static/js/runtime-main.604d2f4f.js.map",
-    "static/js/2.5be73826.chunk.js": "/slot-machine/static/js/2.5be73826.chunk.js",
-    "static/js/2.5be73826.chunk.js.map": "/slot-machine/static/js/2.5be73826.chunk.js.map",
-    "index.html": "/slot-machine/index.html",
-    "static/js/2.5be73826.chunk.js.LICENSE.txt": "/slot-machine/static/js/2.5be73826.chunk.js.LICENSE.txt"
+    "main.js": "http://localhost:3000/static/js/main.b4eccc8b.chunk.js",
+    "main.js.map": "http://localhost:3000/static/js/main.b4eccc8b.chunk.js.map",
+    "runtime-main.js": "http://localhost:3000/static/js/runtime-main.1fcba0d4.js",
+    "runtime-main.js.map": "http://localhost:3000/static/js/runtime-main.1fcba0d4.js.map",
+    "static/js/2.5be73826.chunk.js": "http://localhost:3000/static/js/2.5be73826.chunk.js",
+    "static/js/2.5be73826.chunk.js.map": "http://localhost:3000/static/js/2.5be73826.chunk.js.map",
+    "index.html": "http://localhost:3000/index.html",
+    "static/js/2.5be73826.chunk.js.LICENSE.txt": "http://localhost:3000/static/js/2.5be73826.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.604d2f4f.js",
+    "static/js/runtime-main.1fcba0d4.js",
     "static/js/2.5be73826.chunk.js",
     "static/js/main.b4eccc8b.chunk.js"
   ]
